@@ -5,6 +5,7 @@ import 'package:budfi/screens/transaction/widgets/transaction_headercard.dart';
 import 'package:budfi/widgets/customSizedBox.dart';
 import 'package:flutter/material.dart';
 import '../../db/transaction/transaction_db.dart';
+import '../../theme/Light/colors/colors.dart';
 
 class TransactionScreen extends StatefulWidget {
   const TransactionScreen({Key? key}) : super(key: key);
@@ -53,8 +54,15 @@ class _TransactionScreenState extends State<TransactionScreen>
             color: Theme.of(context).hintColor,
           ),
         ),
-        title:
-            Text('Transactions', style: Theme.of(context).textTheme.headline2),
+        title: const Text(
+          'Transactions',
+          style: TextStyle(
+            fontFamily: 'Prompt',
+            color: BudFiColor.textColorBlack,
+            fontWeight: FontWeight.w600,
+            fontSize: 25,
+          ),
+        ),
       ),
       body: SafeArea(
         child: Padding(
@@ -123,7 +131,12 @@ class _TransactionScreenState extends State<TransactionScreen>
                           return DropdownButton(
                             borderRadius: BorderRadius.circular(20),
                             underline: CustomSizedBox(),
-                            style: Theme.of(context).textTheme.headline1,
+                            style: TextStyle(
+                              fontFamily: 'Prompt',
+                              color: BudFiColor.textColorBlack,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                            ),
                             value: selectedDropDownValue,
                             items: const [
                               DropdownMenuItem(

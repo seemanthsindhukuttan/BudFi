@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class CustomRadioButton extends StatelessWidget {
@@ -27,7 +25,11 @@ class CustomRadioButton extends StatelessWidget {
         ),
         Text(
           text,
-          style: Theme.of(context).textTheme.headline1,
+          style: TextStyle(
+            fontFamily: 'Prompt',
+            color: Theme.of(context).hintColor,
+            fontSize: 20,
+          ),
         ),
       ],
     );

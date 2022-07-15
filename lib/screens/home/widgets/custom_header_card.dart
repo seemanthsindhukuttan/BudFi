@@ -1,7 +1,7 @@
 import 'package:budfi/db/transaction/transaction_db.dart';
-import 'package:budfi/theme/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../../theme/Light/colors/colors.dart';
 import '../../../widgets/customSizedBox.dart';
 import 'custom_card_arrow.dart';
 
@@ -33,12 +33,22 @@ class HeaderCard extends StatelessWidget {
             Text(
               DateFormat.yMMMMEEEEd().format(DateTime.now()).toString(),
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline5,
+              style: const TextStyle(
+                fontFamily: 'Prompt',
+                fontWeight: FontWeight.w800,
+                fontSize: 20,
+                color: BudFiColor.textColorWhite,
+              ),
             ),
             CustomSizedBox(height: deviceHeight / 100),
-            Text(
+            const Text(
               'Balance',
-              style: Theme.of(context).textTheme.headline5,
+              style: TextStyle(
+                fontFamily: 'Prompt',
+                fontWeight: FontWeight.w800,
+                fontSize: 20,
+                color: BudFiColor.textColorWhite,
+              ),
             ),
             ValueListenableBuilder(
               valueListenable: TransactionDb.instance.totalBalanceAmount,
@@ -46,7 +56,12 @@ class HeaderCard extends StatelessWidget {
                 return Text(
                   '₹ $totalBalance'.toString(),
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline6,
+                  style: const TextStyle(
+                    fontFamily: 'Prompt',
+                    fontWeight: FontWeight.w800,
+                    fontSize: 30,
+                    color: BudFiColor.textColorWhite,
+                  ),
                 );
               },
             ),

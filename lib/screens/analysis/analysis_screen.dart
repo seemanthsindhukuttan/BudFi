@@ -5,6 +5,7 @@ import 'package:budfi/screens/transaction/widgets/transaction_headercard.dart';
 import 'package:budfi/widgets/customSizedBox.dart';
 import 'package:flutter/material.dart';
 import '../../db/category/category_db.dart';
+import '../../theme/Light/colors/colors.dart';
 import '../transaction/transaction_screen.dart';
 import '../transaction/widgets/custom_date_picker.dart';
 
@@ -39,7 +40,15 @@ class _AnalysisScreenState extends State<AnalysisScreen>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Analysis', style: Theme.of(context).textTheme.headline2),
+        title: const Text(
+          'Analysis',
+          style: TextStyle(
+            fontFamily: 'Prompt',
+            color: BudFiColor.textColorBlack,
+            fontWeight: FontWeight.w600,
+            fontSize: 25,
+          ),
+        ),
         centerTitle: true,
         leading: IconButton(
           splashRadius: 20,
@@ -115,7 +124,12 @@ class _AnalysisScreenState extends State<AnalysisScreen>
                       return DropdownButton(
                         borderRadius: BorderRadius.circular(20),
                         underline: CustomSizedBox(),
-                        style: Theme.of(context).textTheme.headline1,
+                        style: TextStyle(
+                          fontFamily: 'Prompt',
+                          color: BudFiColor.textColorBlack,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                        ),
                         value: selectedDropDownValue,
                         items: const [
                           DropdownMenuItem(

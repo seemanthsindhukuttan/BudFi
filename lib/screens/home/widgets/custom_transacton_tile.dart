@@ -1,5 +1,6 @@
 import 'package:budfi/widgets/customSizedBox.dart';
 import 'package:flutter/material.dart';
+import '../../../theme/Light/colors/colors.dart';
 
 class CustomTransactionTile extends StatelessWidget {
   bool editButton;
@@ -65,7 +66,12 @@ class CustomTransactionTile extends StatelessWidget {
                   children: [
                     Text(
                       categoryName,
-                      style: Theme.of(context).textTheme.headline3,
+                      style: const TextStyle(
+                        fontFamily: 'Prompt',
+                        color: BudFiColor.textColorBlack,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
                     ),
                     Text(
                       notes,

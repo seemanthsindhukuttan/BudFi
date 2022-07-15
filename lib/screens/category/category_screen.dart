@@ -1,7 +1,7 @@
 import 'package:budfi/screens/category/widgets/add_category_bottom_sheet.dart';
 import 'package:flutter/material.dart';
-
 import '../../db/category/category_db.dart';
+import '../../theme/Light/colors/colors.dart';
 import 'expense_category_screen.dart';
 import 'income_category_screen.dart';
 
@@ -43,7 +43,15 @@ class _CategoryScreenState extends State<CategoryScreen>
             color: Theme.of(context).hintColor,
           ),
         ),
-        title: Text('Categories', style: Theme.of(context).textTheme.headline2),
+        title: const Text(
+          'Categories',
+          style: TextStyle(
+            fontFamily: 'Prompt',
+            color: BudFiColor.textColorBlack,
+            fontWeight: FontWeight.w600,
+            fontSize: 25,
+          ),
+        ),
         actions: [
           IconButton(
             splashRadius: 20,

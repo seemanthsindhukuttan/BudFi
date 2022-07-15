@@ -2,6 +2,7 @@ import 'package:budfi/model/user/user_model.dart';
 import 'package:budfi/screens/addscreen/widgets/custom_elevated_button.dart';
 import 'package:budfi/screens/onboarding/onbording.dart';
 import 'package:flutter/material.dart';
+import '../../../theme/Light/colors/colors.dart';
 
 class CustomBottomSheet extends StatefulWidget {
   const CustomBottomSheet({Key? key}) : super(key: key);
@@ -43,9 +44,14 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
             ),
             Padding(
               padding: EdgeInsets.only(left: deviceWidth / 20),
-              child: Text(
+              child: const Text(
                 'Edit Username',
-                style: Theme.of(context).textTheme.headline2,
+                style: TextStyle(
+                  fontFamily: 'Prompt',
+                  color: BudFiColor.textColorBlack,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 25,
+                ),
               ),
             ),
             Padding(

@@ -1,9 +1,9 @@
 import 'package:budfi/screens/onboarding/onbording.dart';
 import 'package:budfi/screens/settings/custom_drawer.dart';
-import 'package:budfi/theme/colors/colors.dart';
 import '../../db/category/category_db.dart';
 import '../../db/transaction/transaction_db.dart';
 import '../../model/user/user_model.dart';
+import '../../theme/Light/colors/colors.dart';
 import '../analysis/analysis_screen.dart';
 import '/model/transaction/transaction_model.dart';
 import '/screens/addscreen/add_screen.dart';
@@ -42,12 +42,18 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: deviceHeight / 80),
               child: Text(
-                  hours < 12
-                      ? 'Good Morning'
-                      : hours < 17
-                          ? 'Good Afternoon'
-                          : 'Good Evening ',
-                  style: Theme.of(context).textTheme.headline4),
+                hours < 12
+                    ? 'Good Morning'
+                    : hours < 17
+                        ? 'Good Afternoon'
+                        : 'Good Evening ',
+                style: TextStyle(
+                  fontFamily: 'VariableFont',
+                  color: BudFiColor.textColorGrey,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 36,
+                ),
+              ),
             ),
             ValueListenableBuilder(
               valueListenable: OnBording.userDb.listenable(),
@@ -56,7 +62,12 @@ class HomeScreen extends StatelessWidget {
                 final username = value.get('user')!.username;
                 return Text(
                   username,
-                  style: Theme.of(context).textTheme.headline2,
+                  style: const TextStyle(
+                    fontFamily: 'Prompt',
+                    color: BudFiColor.textColorBlack,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 25,
+                  ),
                 );
               },
             ),
@@ -68,8 +79,15 @@ class HomeScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Transaction History',
-                    style: Theme.of(context).textTheme.headline2),
+                const Text(
+                  'Transaction History',
+                  style: TextStyle(
+                    fontFamily: 'Prompt',
+                    color: BudFiColor.textColorBlack,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 25,
+                  ),
+                ),
 
                 ValueListenableBuilder(
                   valueListenable:

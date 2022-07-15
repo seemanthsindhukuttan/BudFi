@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import '../../model/category/category_model.dart';
+import '../../theme/Light/colors/colors.dart';
 
 class AddScreen extends StatefulWidget {
   TransactionModel? updateID;
@@ -51,8 +52,15 @@ class _AddScreenState extends State<AddScreen> {
     double deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Transactions',
-            style: Theme.of(context).textTheme.headline2),
+        title: const Text(
+          'Add Transactions',
+          style: TextStyle(
+            fontFamily: 'Prompt',
+            color: BudFiColor.textColorBlack,
+            fontWeight: FontWeight.w600,
+            fontSize: 25,
+          ),
+        ),
         centerTitle: true,
         leading: IconButton(
           splashRadius: 20,
@@ -166,17 +174,21 @@ class _AddScreenState extends State<AddScreen> {
                                 builder: (BuildContext context,
                                     String? updateValue, Widget? _) {
                                   return DropdownButton(
-                                    style:
-                                        Theme.of(context).textTheme.headline3,
+                                    style: const TextStyle(
+                                      fontFamily: 'Prompt',
+                                      color: BudFiColor.textColorBlack,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 16,
+                                    ),
                                     underline: CustomSizedBox(),
                                     value: updateValue,
                                     isDense: true,
                                     borderRadius: BorderRadius.circular(20),
-                                    hint: const Text(
+                                    hint: Text(
                                       'Select Category',
                                       style: TextStyle(
-                                        fontSize: 18,
                                         fontFamily: 'Prompt',
+                                        color: Theme.of(context).hintColor,
                                       ),
                                     ),
                                     items: (updateCategory ==
@@ -214,8 +226,7 @@ class _AddScreenState extends State<AddScreen> {
                     Text(
                       'OR',
                       style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Prompt',
                         color: Theme.of(context).hintColor,
                       ),
                     ),
@@ -242,7 +253,9 @@ class _AddScreenState extends State<AddScreen> {
                       label: Text(
                         ' Add new\nCategorys',
                         style: TextStyle(
-                            color: Theme.of(context).hintColor, fontSize: 15),
+                          fontFamily: 'Prompt',
+                          color: Theme.of(context).hintColor,
+                        ),
                       ),
                     ),
                   ],
@@ -264,7 +277,12 @@ class _AddScreenState extends State<AddScreen> {
                       }
                     },
                     controller: _noteController,
-                    style: Theme.of(context).textTheme.headline1,
+                    style: TextStyle(
+                      fontFamily: 'Prompt',
+                      color: BudFiColor.textColorBlack,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                    ),
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -312,7 +330,12 @@ class _AddScreenState extends State<AddScreen> {
                           DateFormat('yMEd')
                               .format(_selectedDate.value)
                               .toString(),
-                          style: Theme.of(context).textTheme.headline1,
+                          style: const TextStyle(
+                            fontFamily: 'Prompt',
+                            color: BudFiColor.textColorBlack,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                          ),
                         ),
                       ),
                     );

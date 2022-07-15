@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../db/category/category_db.dart';
 import '../../model/category/category_model.dart';
+import '../../theme/Light/colors/colors.dart';
 import '../../widgets/custom_alert_dialog.dart';
 import 'widgets/add_category_bottom_sheet.dart';
 
@@ -24,7 +25,12 @@ class ExpenseCategory extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     db.categoryname,
-                    style: Theme.of(context).textTheme.headline1,
+                    style: const TextStyle(
+                      fontFamily: 'Prompt',
+                      color: BudFiColor.textColorBlack,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 25,
+                    ),
                   ),
                   trailing: PopupMenuButton(
                     icon: Icon(

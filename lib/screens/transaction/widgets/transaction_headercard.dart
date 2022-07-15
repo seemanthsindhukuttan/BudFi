@@ -1,8 +1,8 @@
 import 'package:budfi/db/transaction/transaction_db.dart';
 import 'package:budfi/screens/transaction/transaction_screen.dart';
-import 'package:budfi/theme/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../../theme/Light/colors/colors.dart';
 import '../../../widgets/customSizedBox.dart';
 import '../../home/widgets/custom_card_arrow.dart';
 
@@ -42,26 +42,40 @@ class TransactionHeaderCard extends StatelessWidget {
                       builder: (BuildContext context, DateTime updatedDate,
                           Widget? _) {
                         return Text(
-                            selectedDropDownValue == null ||
-                                    selectedDropDownValue == 0
-                                ? DateFormat.yMMMMEEEEd()
-                                    .format(DateTime.now())
-                                    .toString()
-                                : selectedDropDownValue == 1
-                                    ? DateFormat.yMMM()
-                                        .format(updatedDate)
-                                        .toString()
-                                    : selectedDropDownValue == 2
-                                        ? updatedYear.toString()
-                                        : '',
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.headline5);
+                          selectedDropDownValue == null ||
+                                  selectedDropDownValue == 0
+                              ? DateFormat.yMMMMEEEEd()
+                                  .format(DateTime.now())
+                                  .toString()
+                              : selectedDropDownValue == 1
+                                  ? DateFormat.yMMM()
+                                      .format(updatedDate)
+                                      .toString()
+                                  : selectedDropDownValue == 2
+                                      ? updatedYear.toString()
+                                      : '',
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontFamily: 'Prompt',
+                            fontWeight: FontWeight.w800,
+                            fontSize: 20,
+                            color: BudFiColor.textColorWhite,
+                          ),
+                        );
                       },
                     );
                   },
                 ),
                 CustomSizedBox(height: deviceHeight / 100),
-                Text('Balance', style: Theme.of(context).textTheme.headline5),
+                const Text(
+                  'Balance',
+                  style: TextStyle(
+                    fontFamily: 'Prompt',
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20,
+                    color: BudFiColor.textColorWhite,
+                  ),
+                ),
                 ValueListenableBuilder(
                   valueListenable: selectedDropDownValue == 0 ||
                           selectedDropDownValue == null
@@ -73,9 +87,16 @@ class TransactionHeaderCard extends StatelessWidget {
                               : TransactionDb.instance.totalBalanceAmount,
                   builder:
                       (BuildContext context, double totalBalance, Widget? _) {
-                    return Text('₹ $totalBalance'.toString(),
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.headline6);
+                    return Text(
+                      '₹ $totalBalance'.toString(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontFamily: 'Prompt',
+                        fontWeight: FontWeight.w800,
+                        fontSize: 30,
+                        color: BudFiColor.textColorWhite,
+                      ),
+                    );
                   },
                 ),
                 Padding(

@@ -2,7 +2,8 @@ import 'dart:io';
 import 'package:budfi/model/transaction/transaction_model.dart';
 import 'package:budfi/model/user/user_model.dart';
 import 'package:budfi/screens/onboarding/onbording.dart';
-import 'package:budfi/theme/colors/colors.dart';
+import 'package:budfi/theme/Light/colors/colors.dart';
+import 'package:budfi/theme/Light/light_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -54,69 +55,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'BudFi',
-      theme: ThemeData(
-        scaffoldBackgroundColor: BudFiColor.backgroundColor,
-        primarySwatch: BudFiColor.budFiprimarySwatch,
-        drawerTheme:
-            const DrawerThemeData(backgroundColor: BudFiColor.backgroundColor),
-        appBarTheme: AppBarTheme(
-          elevation: 0,
-          backgroundColor: BudFiColor.appBarColor,
-          iconTheme: IconThemeData(
-            color: BudFiColor.textColorGrey,
-          ),
-          titleTextStyle: const TextStyle(
-            color: BudFiColor.textColorBlack,
-          ),
-        ),
-        bottomSheetTheme: const BottomSheetThemeData(
-            backgroundColor: BudFiColor.backgroundColor),
-        hintColor: BudFiColor.textColorGrey,
-        textTheme: TextTheme(
-          headline1: const TextStyle(
-            fontFamily: 'Prompt',
-            color: BudFiColor.textColorBlack,
-            fontWeight: FontWeight.w600,
-            fontSize: 18,
-          ),
-          headline2: const TextStyle(
-            fontFamily: 'Prompt',
-            color: BudFiColor.textColorBlack,
-            fontWeight: FontWeight.w600,
-            fontSize: 25,
-          ),
-          headline3: const TextStyle(
-            fontFamily: 'Prompt',
-            color: BudFiColor.textColorBlack,
-            fontWeight: FontWeight.w400,
-            fontSize: 16,
-          ),
-          headline4: TextStyle(
-            fontFamily: 'VariableFont',
-            color: BudFiColor.textColorGrey,
-            fontWeight: FontWeight.w400,
-            fontSize: 36,
-          ),
-          headline5: const TextStyle(
-            fontFamily: 'Prompt',
-            fontWeight: FontWeight.w800,
-            fontSize: 20,
-            color: BudFiColor.textColorWhite,
-          ),
-          headline6: const TextStyle(
-            fontFamily: 'Prompt',
-            fontWeight: FontWeight.w800,
-            fontSize: 30,
-            color: BudFiColor.textColorWhite,
-          ),
-        ),
-        textButtonTheme: TextButtonThemeData(
-          style: ButtonStyle(
-            overlayColor: MaterialStateProperty.all(Colors.transparent),
-          ),
-        ),
-        androidOverscrollIndicator: AndroidOverscrollIndicator.stretch,
-      ),
+      theme: BudFiLightTheme.budFiLightTheme,
       home: AnnotatedRegion<SystemUiOverlayStyle>(
         value: const SystemUiOverlayStyle(
           statusBarColor: BudFiColor.backgroundColor,

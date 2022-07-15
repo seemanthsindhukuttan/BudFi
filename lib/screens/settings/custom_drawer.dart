@@ -15,6 +15,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../main.dart';
 import '../../model/user/user_model.dart';
+import '../../theme/Light/colors/colors.dart';
 import '../../widgets/custom_alert_dialog.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -43,8 +44,15 @@ class CustomDrawer extends StatelessWidget {
                 color: Theme.of(context).hintColor,
               ),
             ),
-            title:
-                Text('Settings', style: Theme.of(context).textTheme.headline2),
+            title: Text(
+              'Settings',
+              style: TextStyle(
+                fontFamily: 'Prompt',
+                color: BudFiColor.textColorBlack,
+                fontWeight: FontWeight.w600,
+                fontSize: 25,
+              ),
+            ),
           ),
           body: SafeArea(
             child: SingleChildScrollView(
@@ -139,8 +147,15 @@ class CustomDrawer extends StatelessWidget {
                         builder: (BuildContext context, Box<UserModel> value,
                             Widget? _) {
                           final username = value.get('user');
-                          return Text(username!.username,
-                              style: Theme.of(context).textTheme.headline2);
+                          return Text(
+                            username!.username,
+                            style: const TextStyle(
+                              fontFamily: 'Prompt',
+                              color: BudFiColor.textColorBlack,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 25,
+                            ),
+                          );
                         },
                       ),
                     ),
@@ -181,9 +196,14 @@ class CustomDrawer extends StatelessWidget {
                           Icons.lock,
                           color: Colors.black,
                         ),
-                        label: Text(
+                        label: const Text(
                           'Enable lock',
-                          style: Theme.of(context).textTheme.headline3,
+                          style: TextStyle(
+                            fontFamily: 'Prompt',
+                            color: BudFiColor.textColorBlack,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
                       ValueListenableBuilder(
@@ -217,9 +237,14 @@ class CustomDrawer extends StatelessWidget {
                       Icons.category_outlined,
                       color: Colors.black,
                     ),
-                    label: Text(
+                    label: const Text(
                       'Edit categories',
-                      style: Theme.of(context).textTheme.headline3,
+                      style: TextStyle(
+                        fontFamily: 'Prompt',
+                        color: BudFiColor.textColorBlack,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                   TextButton.icon(
@@ -251,9 +276,14 @@ class CustomDrawer extends StatelessWidget {
                       Icons.clear_rounded,
                       color: Colors.black,
                     ),
-                    label: Text(
+                    label: const Text(
                       'Clear all data',
-                      style: Theme.of(context).textTheme.headline3,
+                      style: TextStyle(
+                        fontFamily: 'Prompt',
+                        color: BudFiColor.textColorBlack,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                   TextButton.icon(
@@ -262,9 +292,14 @@ class CustomDrawer extends StatelessWidget {
                       Icons.share,
                       color: Colors.black,
                     ),
-                    label: Text(
+                    label: const Text(
                       'Share with friends',
-                      style: Theme.of(context).textTheme.headline3,
+                      style: TextStyle(
+                        fontFamily: 'Prompt',
+                        color: BudFiColor.textColorBlack,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                   TextButton.icon(
@@ -273,9 +308,14 @@ class CustomDrawer extends StatelessWidget {
                       Icons.star,
                       color: Colors.black,
                     ),
-                    label: Text(
+                    label: const Text(
                       'Rate this app',
-                      style: Theme.of(context).textTheme.headline3,
+                      style: TextStyle(
+                        fontFamily: 'Prompt',
+                        color: BudFiColor.textColorBlack,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                   TextButton.icon(
@@ -289,9 +329,14 @@ class CustomDrawer extends StatelessWidget {
                       Icons.feedback,
                       color: Colors.black,
                     ),
-                    label: Text(
+                    label: const Text(
                       'Feedback',
-                      style: Theme.of(context).textTheme.headline3,
+                      style: TextStyle(
+                        fontFamily: 'Prompt',
+                        color: BudFiColor.textColorBlack,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                   TextButton.icon(
@@ -300,9 +345,14 @@ class CustomDrawer extends StatelessWidget {
                       Icons.info,
                       color: Colors.black,
                     ),
-                    label: Text(
+                    label: const Text(
                       'About',
-                      style: Theme.of(context).textTheme.headline3,
+                      style: TextStyle(
+                        fontFamily: 'Prompt',
+                        color: BudFiColor.textColorBlack,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                   Padding(
