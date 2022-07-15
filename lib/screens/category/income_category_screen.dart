@@ -29,7 +29,7 @@ class IncomeCategory extends StatelessWidget {
                       fontFamily: 'Prompt',
                       color: BudFiColor.textColorBlack,
                       fontWeight: FontWeight.w600,
-                      fontSize: 25,
+                      fontSize: 20,
                     ),
                   ),
                   trailing: PopupMenuButton(

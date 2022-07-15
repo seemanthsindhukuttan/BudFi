@@ -40,6 +40,7 @@ dependencies:
   syncfusion_flutter_charts: ^20.2.36
   local_auth: ^2.1.0
   url_launcher: ^6.1.5
+  share_plus: ^4.0.10
   
   
 
@@ -63,6 +64,7 @@ flutter:
   # images
   assets:
     - assets/images/
+    - assets/images/appicon.png
    
 
  # fonts

@@ -17,6 +17,7 @@ import '../../main.dart';
 import '../../model/user/user_model.dart';
 import '../../theme/Light/colors/colors.dart';
 import '../../widgets/custom_alert_dialog.dart';
+import 'package:share_plus/share_plus.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -29,6 +30,29 @@ class CustomDrawer extends StatelessWidget {
 
     ValueNotifier<bool?> _buttonState =
         ValueNotifier(prefs!.getBool('auth') ?? false);
+
+    // image picker Function.
+    Future<void> pickImg({required ImageSource source}) async {
+      try {
+        XFile? imgXfile = await ImagePicker().pickImage(source: source);
+        if (imgXfile == null) {
+          return;
+        } else {
+          String imagepath = imgXfile.path;
+          final user = OnBording.userDb.get('user');
+          OnBording.userDb.put(
+            'user',
+            UserModel(
+                imagePath: imagepath,
+                username: user!.username,
+                amount: user.amount),
+          );
+        }
+      } on PlatformException catch (e) {
+        Text('Failed to pick image$e');
+      }
+    }
+
     return Drawer(
       width: MediaQuery.of(context).size.shortestSide,
       child: Padding(
@@ -44,7 +68,7 @@ class CustomDrawer extends StatelessWidget {
                 color: Theme.of(context).hintColor,
               ),
             ),
-            title: Text(
+            title: const Text(
               'Settings',
               style: TextStyle(
                 fontFamily: 'Prompt',
@@ -186,44 +210,58 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                   CustomSizedBox(
-                    height: deviceHeight / 50,
+                    height: deviceHeight / 70,
                   ),
-                  Row(
-                    children: [
-                      TextButton.icon(
-                        onPressed: null,
-                        icon: const Icon(
-                          Icons.lock,
-                          color: Colors.black,
-                        ),
-                        label: const Text(
-                          'Enable lock',
-                          style: TextStyle(
-                            fontFamily: 'Prompt',
-                            color: BudFiColor.textColorBlack,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 16,
+                  ValueListenableBuilder(
+                    valueListenable: _buttonState,
+                    builder: (BuildContext context, bool? currentState,
+                        Widget? child) {
+                      return Row(
+                        children: [
+                          TextButton.icon(
+                            onPressed: null,
+                            icon: _buttonState.value == true
+                                ? const Icon(
+                                    Icons.lock,
+                                    color: Colors.black,
+                                  )
+                                : const Icon(
+                                    Icons.lock_open_outlined,
+                                    color: Colors.black,
+                                  ),
+                            label: const Text(
+                              'Enable lock',
+                              style: TextStyle(
+                                fontFamily: 'Prompt',
+                                color: BudFiColor.textColorBlack,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      ValueListenableBuilder(
-                        valueListenable: _buttonState,
-                        builder: (BuildContext context, bool? currentState,
-                            Widget? child) {
-                          return Switch(
+                          Switch(
                             value: currentState!,
                             onChanged: (value) async {
                               _buttonState.value = value;
-                              prefs?.setBool('auth', value);
-
-                              if (prefs!.getBool('auth') == true) {
-                                await LocalAuthApi.authentication();
+                              bool _lock = await LocalAuthApi.authentication();
+                              if (value == true) {
+                                if (_lock == true) {
+                                  prefs?.setBool('auth', true);
+                                }
                               }
+                              if (value == false) {
+                                if (_lock == true) {
+                                  prefs?.setBool('auth', false);
+                                }
+                              }
+
+                              _buttonState.value =
+                                  prefs!.getBool('auth') ?? false;
                             },
-                          );
-                        },
-                      ),
-                    ],
+                          ),
+                        ],
+                      );
+                    },
                   ),
                   TextButton.icon(
                     onPressed: () {
@@ -287,7 +325,12 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                   TextButton.icon(
-                    onPressed: () {},
+                    onPressed: () async {
+                      // Share.share(
+                      //   'BudFi, A Income Expense Finder -Download the simple and user friendly money manager app.//todo link update// ',
+                      //   subject: 'BudFi',
+                      // );
+                    },
                     icon: const Icon(
                       Icons.share,
                       color: Colors.black,
@@ -340,7 +383,60 @@ class CustomDrawer extends StatelessWidget {
                     ),
                   ),
                   TextButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Text('BudFi'),
+                                CustomSizedBox(
+                                  width: deviceHeight / 80,
+                                ),
+                                Image.asset(
+                                  'assets/images/appicon.png',
+                                  height: 40,
+                                  //width: 0,
+                                ),
+                              ],
+                            ),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Text("A Income Expense Finder."),
+                                Text(
+                                  'version 1.0.0',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Theme.of(context).hintColor),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 2),
+                                  child: Text(
+                                    "Developed by SeemanthSindhukuttan",
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      color: BudFiColor.textColorGrey,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            titleTextStyle: const TextStyle(
+                              fontFamily: 'Prompt',
+                              color: BudFiColor.textColorBlack,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 25,
+                            ),
+                          );
+                        },
+                      );
+                    },
                     icon: const Icon(
                       Icons.info,
                       color: Colors.black,
@@ -372,26 +468,5 @@ class CustomDrawer extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> pickImg({required ImageSource source}) async {
-    try {
-      XFile? imgXfile = await ImagePicker().pickImage(source: source);
-      if (imgXfile == null) {
-        return;
-      } else {
-        String imagepath = imgXfile.path;
-        final user = OnBording.userDb.get('user');
-        OnBording.userDb.put(
-          'user',
-          UserModel(
-              imagePath: imagepath,
-              username: user!.username,
-              amount: user.amount),
-        );
-      }
-    } on PlatformException catch (e) {
-      Text('Failed to pick image$e');
-    }
   }
 }

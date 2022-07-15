@@ -14,6 +14,7 @@ class LocalAuthApi {
 
   static Future<bool> authentication() async {
     final isAvailable = await hasBiometerics();
+
     if (!isAvailable) {
       return false;
     }

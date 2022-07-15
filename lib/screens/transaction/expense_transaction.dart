@@ -34,11 +34,11 @@ class ExpenseTransaction extends StatelessWidget {
                 return newlist.isEmpty
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
                             'assets/images/no_data.gif',
-                            height: deviceHeight * 0.30,
+                            height: deviceHeight * 0.38,
                           ),
                           const Text(
                             'No Expense Transaction',

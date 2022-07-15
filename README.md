@@ -16,6 +16,7 @@ Hive (NoSQL) [https://pub.dev/packages/hive] </Br>
   syncfusion_flutter_charts [https://pub.dev/packages/syncfusion_flutter_charts] </Br>
   local_auth  [https://pub.dev/packages/local_auth] </Br>
   url_launcher [https://pub.dev/packages/url_launcher] </Br>
+  share_plus  [https://pub.dev/packages/share_plus] </Br>
 
 Follow @
 

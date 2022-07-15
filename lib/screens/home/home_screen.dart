@@ -147,10 +147,11 @@ class HomeScreen extends StatelessWidget {
                         .instance.transactionsListNotifer.value.isEmpty
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset(
                             'assets/images/no_data.gif',
-                            height: deviceHeight * 0.30,
+                            height: deviceHeight * 0.38,
                           ),
                           const Text(
                             '      No Transactions !!\n add some transactions',

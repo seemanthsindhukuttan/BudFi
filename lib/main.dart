@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:budfi/model/transaction/transaction_model.dart';
 import 'package:budfi/model/user/user_model.dart';
 import 'package:budfi/screens/onboarding/onbording.dart';
+import 'package:budfi/screens/splashscreen.dart';
 import 'package:budfi/theme/Light/colors/colors.dart';
 import 'package:budfi/theme/Light/light_theme.dart';
 import 'package:flutter/material.dart';
@@ -37,8 +38,6 @@ void main() async {
 
   prefs = await SharedPreferences.getInstance();
   final boolKey = prefs!.getBool('HOME') ?? false;
-  bool? lock = prefs!.getBool('auth');
-  lock == true ? await LocalAuthApi.authentication() : null;
 
   runApp(MyApp(boolkey: boolKey));
 }
@@ -52,6 +51,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool lock = prefs!.getBool('auth') ?? false;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'BudFi',
@@ -63,7 +63,11 @@ class MyApp extends StatelessWidget {
           statusBarIconBrightness: Brightness.dark,
           systemNavigationBarIconBrightness: Brightness.dark,
         ),
-        child: boolkey == false ? const OnBording() : const HomeScreen(),
+        child: boolkey == false
+            ? const OnBording()
+            : lock == false
+                ? const HomeScreen()
+                : SplashScreen(),
       ),
     );
   }

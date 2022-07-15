@@ -131,7 +131,7 @@ class _TransactionScreenState extends State<TransactionScreen>
                           return DropdownButton(
                             borderRadius: BorderRadius.circular(20),
                             underline: CustomSizedBox(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily: 'Prompt',
                               color: BudFiColor.textColorBlack,
                               fontWeight: FontWeight.w600,
