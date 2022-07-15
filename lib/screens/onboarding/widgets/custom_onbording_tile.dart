@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../widgets/customSizedBox.dart';
 
 class CustomOnBordingTile extends StatelessWidget {

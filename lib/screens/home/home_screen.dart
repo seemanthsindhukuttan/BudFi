@@ -1,6 +1,6 @@
 import 'package:budfi/screens/onboarding/onbording.dart';
 import 'package:budfi/screens/settings/custom_drawer.dart';
-import 'package:flutter/rendering.dart';
+import 'package:budfi/theme/colors/colors.dart';
 import '../../db/category/category_db.dart';
 import '../../db/transaction/transaction_db.dart';
 import '../../model/user/user_model.dart';
@@ -42,18 +42,12 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: deviceHeight / 80),
               child: Text(
-                hours < 12
-                    ? 'Good Morning !!'
-                    : hours < 17
-                        ? 'Good Afternoon'
-                        : 'Good Evening ',
-                style: TextStyle(
-                  color: Theme.of(context).hintColor,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Prompt',
-                  fontSize: 25,
-                ),
-              ),
+                  hours < 12
+                      ? 'Good Morning'
+                      : hours < 17
+                          ? 'Good Afternoon'
+                          : 'Good Evening ',
+                  style: Theme.of(context).textTheme.headline4),
             ),
             ValueListenableBuilder(
               valueListenable: OnBording.userDb.listenable(),
@@ -61,12 +55,8 @@ class HomeScreen extends StatelessWidget {
                   (BuildContext context, Box<UserModel> value, Widget? child) {
                 final username = value.get('user')!.username;
                 return Text(
-                  username.toUpperCase(),
-                  style: const TextStyle(
-                    fontFamily: 'Prompt',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
+                  username,
+                  style: Theme.of(context).textTheme.headline2,
                 );
               },
             ),

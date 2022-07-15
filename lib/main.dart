@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:budfi/model/transaction/transaction_model.dart';
 import 'package:budfi/model/user/user_model.dart';
 import 'package:budfi/screens/onboarding/onbording.dart';
+import 'package:budfi/theme/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -54,51 +55,59 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'BudFi',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        primarySwatch: const MaterialColor(0xFF7C4DFF, {
-          50: Color(0xFF7C4DFF),
-          100: Color(0xFF7C4DFF),
-          200: Color(0xFF7C4DFF),
-          300: Color(0xFF7C4DFF),
-          400: Color(0xFF7C4DFF),
-          500: Color(0xFF7C4DFF),
-          600: Color(0xFF7C4DFF),
-          700: Color(0xFF7C4DFF),
-          800: Color(0xFF7C4DFF),
-          900: Color(0xFF7C4DFF),
-        }),
-        drawerTheme: const DrawerThemeData(backgroundColor: Colors.white),
+        scaffoldBackgroundColor: BudFiColor.backgroundColor,
+        primarySwatch: BudFiColor.budFiprimarySwatch,
+        drawerTheme:
+            const DrawerThemeData(backgroundColor: BudFiColor.backgroundColor),
         appBarTheme: AppBarTheme(
           elevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: BudFiColor.appBarColor,
           iconTheme: IconThemeData(
-            color: Theme.of(context).hintColor,
+            color: BudFiColor.textColorGrey,
           ),
           titleTextStyle: const TextStyle(
-            color: Colors.black,
+            color: BudFiColor.textColorBlack,
           ),
         ),
-        bottomSheetTheme:
-            const BottomSheetThemeData(backgroundColor: Colors.white),
-        hintColor: Colors.grey.shade500,
-        textTheme: const TextTheme(
-          headline1: TextStyle(
+        bottomSheetTheme: const BottomSheetThemeData(
+            backgroundColor: BudFiColor.backgroundColor),
+        hintColor: BudFiColor.textColorGrey,
+        textTheme: TextTheme(
+          headline1: const TextStyle(
             fontFamily: 'Prompt',
-            color: Colors.black,
+            color: BudFiColor.textColorBlack,
             fontWeight: FontWeight.w600,
             fontSize: 18,
           ),
-          headline2: TextStyle(
+          headline2: const TextStyle(
             fontFamily: 'Prompt',
-            color: Colors.black,
-            fontWeight: FontWeight.w900,
+            color: BudFiColor.textColorBlack,
+            fontWeight: FontWeight.w600,
             fontSize: 25,
           ),
-          headline3: TextStyle(
+          headline3: const TextStyle(
             fontFamily: 'Prompt',
-            color: Colors.black,
+            color: BudFiColor.textColorBlack,
             fontWeight: FontWeight.w400,
             fontSize: 16,
+          ),
+          headline4: TextStyle(
+            fontFamily: 'VariableFont',
+            color: BudFiColor.textColorGrey,
+            fontWeight: FontWeight.w400,
+            fontSize: 36,
+          ),
+          headline5: const TextStyle(
+            fontFamily: 'Prompt',
+            fontWeight: FontWeight.w800,
+            fontSize: 20,
+            color: BudFiColor.textColorWhite,
+          ),
+          headline6: const TextStyle(
+            fontFamily: 'Prompt',
+            fontWeight: FontWeight.w800,
+            fontSize: 30,
+            color: BudFiColor.textColorWhite,
           ),
         ),
         textButtonTheme: TextButtonThemeData(
@@ -110,8 +119,8 @@ class MyApp extends StatelessWidget {
       ),
       home: AnnotatedRegion<SystemUiOverlayStyle>(
         value: const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-          systemNavigationBarColor: Colors.white,
+          statusBarColor: BudFiColor.backgroundColor,
+          systemNavigationBarColor: BudFiColor.backgroundColor,
           statusBarIconBrightness: Brightness.dark,
           systemNavigationBarIconBrightness: Brightness.dark,
         ),

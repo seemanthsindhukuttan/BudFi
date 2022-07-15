@@ -4,7 +4,6 @@ import 'package:budfi/screens/transaction/widgets/custom_date_picker.dart';
 import 'package:budfi/screens/transaction/widgets/transaction_headercard.dart';
 import 'package:budfi/widgets/customSizedBox.dart';
 import 'package:flutter/material.dart';
-
 import '../../db/transaction/transaction_db.dart';
 
 class TransactionScreen extends StatefulWidget {

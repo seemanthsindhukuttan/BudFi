@@ -70,5 +70,8 @@ flutter:
     - family: Prompt
       fonts:
         - asset: assets/fonts/Prompt-Medium.ttf
+    - family: VariableFont
+      fonts:
+        - asset: assets\fonts\VariableFont.ttf    
  
  

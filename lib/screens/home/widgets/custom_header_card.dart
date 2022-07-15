@@ -1,4 +1,5 @@
 import 'package:budfi/db/transaction/transaction_db.dart';
+import 'package:budfi/theme/colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../widgets/customSizedBox.dart';
@@ -20,13 +21,10 @@ class HeaderCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           backgroundBlendMode: BlendMode.srcOver,
-          gradient: const LinearGradient(
+          gradient: LinearGradient(
             begin: FractionalOffset.topLeft,
             end: FractionalOffset.bottomRight,
-            colors: [
-              Colors.blue,
-              Colors.purpleAccent,
-            ],
+            colors: BudFiColor.gradientColor,
           ),
         ),
         child: Column(
@@ -35,22 +33,12 @@ class HeaderCard extends StatelessWidget {
             Text(
               DateFormat.yMMMMEEEEd().format(DateTime.now()).toString(),
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontFamily: 'Prompt',
-                fontWeight: FontWeight.w800,
-                fontSize: 20,
-                color: Colors.white,
-              ),
+              style: Theme.of(context).textTheme.headline5,
             ),
             CustomSizedBox(height: deviceHeight / 100),
-            const Text(
+            Text(
               'Balance',
-              style: TextStyle(
-                fontFamily: 'Prompt',
-                fontWeight: FontWeight.w800,
-                fontSize: 20,
-                color: Colors.white,
-              ),
+              style: Theme.of(context).textTheme.headline5,
             ),
             ValueListenableBuilder(
               valueListenable: TransactionDb.instance.totalBalanceAmount,
@@ -58,12 +46,7 @@ class HeaderCard extends StatelessWidget {
                 return Text(
                   '₹ $totalBalance'.toString(),
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontFamily: 'Prompt',
-                    fontWeight: FontWeight.w800,
-                    fontSize: 30,
-                    color: Colors.white,
-                  ),
+                  style: Theme.of(context).textTheme.headline6,
                 );
               },
             ),

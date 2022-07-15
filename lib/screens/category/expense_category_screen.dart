@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../db/category/category_db.dart';
 import '../../model/category/category_model.dart';
 import '../../widgets/custom_alert_dialog.dart';

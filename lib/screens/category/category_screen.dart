@@ -1,6 +1,5 @@
 import 'package:budfi/screens/category/widgets/add_category_bottom_sheet.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../db/category/category_db.dart';
 import 'expense_category_screen.dart';

@@ -1,7 +1,5 @@
 import 'dart:io';
 import 'package:budfi/db/category/category_db.dart';
-import 'package:budfi/model/category/category_model.dart';
-import 'package:budfi/model/transaction/transaction_model.dart';
 import 'package:budfi/model/user/user_model.dart';
 import 'package:budfi/screens/addscreen/widgets/custom_elevated_button.dart';
 import 'package:budfi/screens/home/home_screen.dart';

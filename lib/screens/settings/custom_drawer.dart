@@ -139,13 +139,8 @@ class CustomDrawer extends StatelessWidget {
                         builder: (BuildContext context, Box<UserModel> value,
                             Widget? _) {
                           final username = value.get('user');
-                          return Text(
-                            username!.username.toUpperCase(),
-                            style: const TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Prompt',
-                                fontWeight: FontWeight.w700),
-                          );
+                          return Text(username!.username,
+                              style: Theme.of(context).textTheme.headline2);
                         },
                       ),
                     ),
