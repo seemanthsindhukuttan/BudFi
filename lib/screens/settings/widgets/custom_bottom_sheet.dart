@@ -13,6 +13,7 @@ class CustomBottomSheet extends StatefulWidget {
 
 class _CustomBottomSheetState extends State<CustomBottomSheet> {
   final usernamecontroller = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
   final value = OnBording.userDb.get('user');
   @override
   void initState() {
@@ -56,14 +57,26 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
-              child: TextFormField(
-                controller: usernamecontroller,
-                autofocus: true,
-                decoration: const InputDecoration(
-                  hintText: 'Username',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
+              child: Form(
+                key: _formKey,
+                child: TextFormField(
+                  controller: usernamecontroller,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Username is required';
+                    } else if (value.length < 3) {
+                      return "Min 3 Characters.";
+                    } else {
+                      return null;
+                    }
+                  },
+                  autofocus: true,
+                  decoration: const InputDecoration(
+                    hintText: 'Username',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
                     ),
                   ),
                 ),
@@ -76,15 +89,17 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                 buttonText: 'save',
                 width: MediaQuery.of(context).size.width * 0.5,
                 onpressed: () async {
-                  await OnBording.userDb.put(
-                    'user',
-                    UserModel(
-                      imagePath: value!.imagePath,
-                      username: usernamecontroller.text,
-                      amount: value!.amount,
-                    ),
-                  );
-                  Navigator.pop(context);
+                  if (_formKey.currentState!.validate()) {
+                    await OnBording.userDb.put(
+                      'user',
+                      UserModel(
+                        imagePath: value!.imagePath,
+                        username: usernamecontroller.text,
+                        amount: value!.amount,
+                      ),
+                    );
+                    Navigator.pop(context);
+                  }
                 },
               ),
             ),

@@ -16,6 +16,7 @@ class AddCategoryBottomSheet extends StatefulWidget {
 }
 
 class _AddCategoryBottomSheetState extends State<AddCategoryBottomSheet> {
+  final _formKey = GlobalKey<FormState>();
   final _type = ValueNotifier(categorytype.income);
   final _categoryNameController = TextEditingController();
 
@@ -63,14 +64,26 @@ class _AddCategoryBottomSheetState extends State<AddCategoryBottomSheet> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
-              child: TextFormField(
-                controller: _categoryNameController,
-                autofocus: true,
-                decoration: const InputDecoration(
-                  hintText: 'Category name',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
+              child: Form(
+                key: _formKey,
+                child: TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Category is required';
+                    } else if (value.length < 3) {
+                      return "Min 3 Characters.";
+                    } else {
+                      return null;
+                    }
+                  },
+                  controller: _categoryNameController,
+                  autofocus: true,
+                  decoration: const InputDecoration(
+                    hintText: 'Category name',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20),
+                      ),
                     ),
                   ),
                 ),
@@ -122,7 +135,7 @@ class _AddCategoryBottomSheetState extends State<AddCategoryBottomSheet> {
                 width: MediaQuery.of(context).size.width * 0.5,
                 onpressed: () async {
                   if (widget.updateID == null) {
-                    if (_categoryNameController.text.isNotEmpty) {
+                    if (_formKey.currentState!.validate()) {
                       await CategoryDB.instance.addCategoryes(
                         CategoryModel(
                           id: DateTime.now().millisecondsSinceEpoch.toString(),
@@ -134,7 +147,7 @@ class _AddCategoryBottomSheetState extends State<AddCategoryBottomSheet> {
                     }
                   }
                   if (widget.updateID != null) {
-                    if (_categoryNameController.text.isNotEmpty) {
+                    if (_formKey.currentState!.validate()) {
                       CategoryDB.instance.updateCategory(
                         widget.updateID!.id,
                         CategoryModel(

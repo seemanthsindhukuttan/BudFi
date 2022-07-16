@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(
-                  top: deviceHeight / 40, bottom: deviceHeight / 40),
+                  top: deviceHeight / 90, bottom: deviceHeight / 40),
               child: const HeaderCard(),
             ),
             Row(
