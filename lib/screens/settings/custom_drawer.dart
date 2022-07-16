@@ -243,7 +243,7 @@ class CustomDrawer extends StatelessWidget {
                             value: currentState!,
                             onChanged: (value) async {
                               _buttonState.value = value;
-                              bool _lock = await LocalAuthApi.authentication();
+                              bool? _lock = await LocalAuthApi.authentication();
                               if (value == true) {
                                 if (_lock == true) {
                                   prefs?.setBool('auth', true);

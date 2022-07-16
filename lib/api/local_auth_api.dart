@@ -12,7 +12,7 @@ class LocalAuthApi {
     }
   }
 
-  static Future<bool> authentication() async {
+  static Future<dynamic> authentication() async {
     final isAvailable = await hasBiometerics();
 
     if (!isAvailable) {
@@ -28,6 +28,10 @@ class LocalAuthApi {
         ),
       );
     } on PlatformException catch (e) {
+      if (e != null) {
+        return 'LOCKED';
+      }
+
       return false;
     }
   }
