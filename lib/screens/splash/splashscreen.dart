@@ -1,11 +1,12 @@
 import 'dart:async';
 
 import 'package:budfi/api/local_auth_api.dart';
+import 'package:budfi/main.dart';
 import 'package:budfi/screens/home/home_screen.dart';
 import 'package:budfi/widgets/customSizedBox.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../main.dart';
+import '../../main.dart';
 
 class SplashScreen extends StatelessWidget {
   SplashScreen({Key? key}) : super(key: key);

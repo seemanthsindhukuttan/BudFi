@@ -50,23 +50,23 @@ class _OnBordingState extends State<OnBording> {
             controller: pageController,
             children: [
               CustomOnBordingTile(
-                imgPath: 'assets/images/1.jpg',
+                imgPath: 'assets/images/1.png',
                 title: 'All your finance in one place',
                 firstSubtitle: 'See the bigger picture by having all your',
                 secondSubtitle: 'finance in one place',
               ),
               CustomOnBordingTile(
-                imgPath: 'assets/images/2.jpg',
+                imgPath: 'assets/images/2.png',
                 title: 'Where your money goes',
                 firstSubtitle: 'Track with categories',
               ),
               CustomOnBordingTile(
-                imgPath: 'assets/images/3.jpg',
+                imgPath: 'assets/images/3.png',
                 title: 'Track your spending',
                 firstSubtitle: 'keep track of your Income&Expense manually',
               ),
               CustomOnBordingTile(
-                imgPath: 'assets/images/4.jpg',
+                imgPath: 'assets/images/4.png',
                 title: 'Save your Money',
                 firstSubtitle: 'You Must Value Saving More than Spending',
               ),
